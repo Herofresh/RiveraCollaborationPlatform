@@ -9,11 +9,42 @@
   >
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item routerLink="/" (click)="drawer.close()">Home</a>
-      <a mat-list-item routerLink="/login" (click)="drawer.close()">Login</a>
-      <a mat-list-item routerLink="/kanban" (click)="drawer.close()">Kanban</a>
-      <a mat-list-item routerLink="/posts" (click)="drawer.close()">Posts</a>
-      <a mat-list-item routerLink="/customers" (click)="drawer.close()">User</a>
+      <a
+        mat-list-item
+        routerLink="/"
+        routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{ exact: true }"
+        (click)="drawer.close()"
+        >Home</a
+      >
+      <a
+        mat-list-item
+        routerLink="/login"
+        routerLinkActive="active-link"
+        (click)="drawer.close()"
+        >Login</a
+      >
+      <a
+        mat-list-item
+        routerLink="/kanban"
+        routerLinkActive="active-link"
+        (click)="drawer.close()"
+        >Kanban</a
+      >
+      <a
+        mat-list-item
+        routerLink="/posts"
+        routerLinkActive="active-link"
+        (click)="drawer.close()"
+        >Posts</a
+      >
+      <a
+        mat-list-item
+        routerLink="/customers"
+        routerLinkActive="active-link"
+        (click)="drawer.close()"
+        >User</a
+      >
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -27,13 +58,21 @@
       >
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span class="logo" routerLink="/">Rivera Demo</span>
+      <span class="logo" routerLink="/">🐻 Rivera Demo</span>
       <span class="fill-space"></span>
       <div *ngIf="!(isHandset$ | async)">
-        <a mat-button routerLink="/kanban">🍱Kanban Demo</a>
-        <a mat-button routerLink="/posts">🍱Message Board Demo</a>
-        <a mat-button routerLink="/customers">⚡SSR Demo</a>
-        <a mat-button routerLink="/login">🔑 Login</a>
+        <a mat-button routerLink="/kanban" routerLinkActive="active-link"
+          >🍱 Kanban Demo</a
+        >
+        <a mat-button routerLink="/posts" routerLinkActive="active-link"
+          >ℹ Message Board Demo</a
+        >
+        <a mat-button routerLink="/customers" routerLinkActive="active-link"
+          >👽 SSR Demo</a
+        >
+        <a mat-button routerLink="/login" routerLinkActive="active-link"
+          >🔑 Login</a
+        >
       </div>
     </mat-toolbar>
     <ng-content> </ng-content>

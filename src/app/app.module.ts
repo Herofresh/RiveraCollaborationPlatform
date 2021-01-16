@@ -10,23 +10,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
+import { HomePageComponent } from './home-page/home-page.component';
 
-const firebaseConfig = {
-  apiKey: 'AIzaSyDlY8Vg96j7PCxWWw8jvJzvPN1kWTQTn2A',
-  authDomain: 'messageboard-301910.firebaseapp.com',
-  projectId: 'messageboard-301910',
-  storageBucket: 'messageboard-301910.appspot.com',
-  messagingSenderId: '2453259171',
-  appId: '1:2453259171:web:764c41d9ab5edf5dee5016',
-  measurementId: 'G-ZGT7DPGWRG',
-};
+import { environment } from '../environments/environment';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, HomePageComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
     AngularFireStorageModule,
