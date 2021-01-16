@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-// 1. Import the libs you need
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
@@ -10,6 +9,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SharedModule } from './shared/shared.module';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDlY8Vg96j7PCxWWw8jvJzvPN1kWTQTn2A',
@@ -31,6 +31,7 @@ const firebaseConfig = {
     AngularFireAuthModule,
     AngularFireStorageModule,
     BrowserAnimationsModule,
+    SharedModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
