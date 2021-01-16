@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "messageboard-301910": {
+      "hosting": {
+        "MessageBoard": [
+          "messageboard-301910"
+        ]
+      }
+    }
+  }
+}
