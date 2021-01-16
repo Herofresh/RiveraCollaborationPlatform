@@ -12,6 +12,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 import { HomePageComponent } from './home-page/home-page.component';
 
+import { ScrollingModule } from '@angular/cdk/scrolling';
+
 import { environment } from '../environments/environment';
 
 @NgModule({
@@ -25,6 +27,7 @@ import { environment } from '../environments/environment';
     AngularFireStorageModule,
     BrowserAnimationsModule,
     SharedModule,
+    ScrollingModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
