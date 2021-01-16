@@ -16,9 +16,9 @@
   }
 
   .handle {
-    position: relative;
-    top: 5px;
-    left: 0;
+    position: absolute;
+    top: 15px;
+    right: 15px;
     cursor: move;
   }
 }
