@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: 'AIzaSyDlY8Vg96j7PCxWWw8jvJzvPN1kWTQTn2A',
+    apiKey: 'API_KEY',
     authDomain: 'messageboard-301910.firebaseapp.com',
     projectId: 'messageboard-301910',
     storageBucket: 'messageboard-301910.appspot.com',
