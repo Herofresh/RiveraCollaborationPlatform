@@ -53,11 +53,17 @@ export class EmailLoginComponent implements OnInit {
     return this.form.get('passwordConfirm');
   }
 
+  get canReset() {
+    if ((this.type = 'reset')) return this.email?.valid;
+    else return false;
+  }
+
   get passwordDoesMatch() {
     if (this.type !== 'signup') {
       return true;
     } else {
       if (this.password && this.passwordConfirm) {
+        console.log('here', this.password.value, this.passwordConfirm);
         return this.password.value === this.passwordConfirm.value;
       } else {
         return false;
