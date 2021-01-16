@@ -32,7 +32,7 @@ import { BoardService } from '../board.service';
       </button>
     </div>
   `,
-  styleUrls: ['./task-dialog.component.scss'],
+  styleUrls: ['./dialog.scss'],
 })
 export class TaskDialogComponent implements OnInit {
   labelOptions = ['purple', 'blue', 'green', 'yellow', 'red', 'gray'];

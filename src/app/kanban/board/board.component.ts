@@ -29,15 +29,15 @@ export class BoardComponent implements OnInit {
       width: '500px',
       data: task
         ? { task: { ...task }, isNew: false, boardId: this.board.id, idx }
-        : { task: newTask, isNew: true }
+        : { task: newTask, isNew: true },
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         if (result.isNew) {
           this.boardService.updateTasks(this.board.id!, [
             ...this.board.tasks!,
-            result.task
+            result.task,
           ]);
         } else {
           const update = this.board.tasks!;
@@ -46,4 +46,9 @@ export class BoardComponent implements OnInit {
         }
       }
     });
+  }
+
+  handleDelete() {
+    this.boardService.deleteBoard(this.board.id!);
+  }
 }
