@@ -1,9 +1,7 @@
 <ng-container *ngIf="infinite$ | async as messages">
   <cdk-virtual-scroll-viewport
     itemSize="100"
-    (scrolledIndexChange)="
-      nextBatch($event, messages[messages.length - 1].createdAt)
-    "
+    (scrolledIndexChange)="nextBatch($event, messages[messages.length - 1])"
   >
     <li
       *cdkVirtualFor="
@@ -30,6 +28,7 @@
   class="add-comment"
   color="primary"
   aria-label="Adds a new Comment"
+  (click)="openMessageDialog()"
 >
   <mat-icon>add_comment</mat-icon>
 </button>

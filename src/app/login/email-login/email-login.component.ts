@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -15,7 +16,11 @@ export class EmailLoginComponent implements OnInit {
 
   serverMessage = '';
 
-  constructor(private afAuth: AngularFireAuth, private fb: FormBuilder) {}
+  constructor(
+    private afAuth: AngularFireAuth,
+    private fb: FormBuilder,
+    private db: AngularFirestore
+  ) {}
 
   ngOnInit() {
     this.form = this.fb.group({
@@ -80,7 +85,16 @@ export class EmailLoginComponent implements OnInit {
         await this.afAuth.signInWithEmailAndPassword(email, password);
       }
       if (this.isSignup) {
-        await this.afAuth.createUserWithEmailAndPassword(email, password);
+        await this.afAuth
+          .createUserWithEmailAndPassword(email, password)
+          .then((data) => {
+            this.db.collection('user').add({
+              email: data.user?.email,
+              displayName: data.user?.displayName,
+              photoUrl: data.user?.photoURL,
+              uid: data.user?.uid,
+            });
+          });
       }
       if (this.isPasswordReset) {
         await this.afAuth.sendPasswordResetEmail(email);

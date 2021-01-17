@@ -36,26 +36,54 @@ export class MessageService {
    * @param lastSeen Last Element of Current Array
    */
   getBatch(lastSeen: any) {
-    return this.db
-      .collection(this.collectionName, (ref) =>
-        ref.orderBy('createdAt').startAfter(lastSeen).limit(this.batchSize)
-      )
-      .snapshotChanges()
-      .pipe(
-        tap((arr) => (arr.length ? null : this.theEnd.next(true))),
-        map((arr) => {
-          return arr.reduce(
-            (
-              acc: any,
-              cur: { payload: { doc: { id: any; data: () => any } } }
-            ) => {
-              const id = cur.payload.doc.id;
-              const data = cur.payload.doc.data();
-              return { ...acc, [id]: data };
-            },
-            {}
-          );
-        })
-      );
+    const lastSeenTimestamp = lastSeen ? lastSeen.createdAt : null;
+    if (lastSeen) {
+      return this.db
+        .collection(this.collectionName, (ref) =>
+          ref
+            .orderBy('createdAt', 'desc')
+            .startAfter(lastSeenTimestamp)
+            .limit(this.batchSize)
+        )
+        .snapshotChanges()
+        .pipe(
+          tap((arr) => (arr.length ? null : this.theEnd.next(true))),
+          map((arr) => {
+            return arr.reduce(
+              (
+                acc: any,
+                cur: { payload: { doc: { id: any; data: () => any } } }
+              ) => {
+                const id = cur.payload.doc.id;
+                const data = cur.payload.doc.data();
+                return { ...acc, [id]: data };
+              },
+              {}
+            );
+          })
+        );
+    } else {
+      return this.db
+        .collection(this.collectionName, (ref) =>
+          ref.orderBy('createdAt', 'desc').limit(this.batchSize)
+        )
+        .snapshotChanges()
+        .pipe(
+          tap((arr) => (arr.length ? null : this.theEnd.next(true))),
+          map((arr) => {
+            return arr.reduce(
+              (
+                acc: any,
+                cur: { payload: { doc: { id: any; data: () => any } } }
+              ) => {
+                const id = cur.payload.doc.id;
+                const data = cur.payload.doc.data();
+                return { ...acc, [id]: data };
+              },
+              {}
+            );
+          })
+        );
+    }
   }
 }
