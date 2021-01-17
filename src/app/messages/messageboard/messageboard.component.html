@@ -9,7 +9,7 @@
         let i = index;
         trackBy: trackByIdx
       "
-      class="animated lightSpeedIn"
+      class="animate__animated animate__backInRight"
     >
       <h2 class="msg-header">{{ message.header }}</h2>
       <h5 class="msg-time">
@@ -21,7 +21,7 @@
       <p>{{ message.text }}</p>
     </li>
 
-    <li *ngIf="theEnd" class="animated lightSpeedIn">
+    <li *ngIf="theEnd" class="animate__animated animate__backInRight">
       <h2 class="msg-header">THE END!</h2>
     </li>
   </cdk-virtual-scroll-viewport>

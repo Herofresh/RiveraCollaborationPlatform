@@ -15,7 +15,10 @@
 </div>
 <div *ngIf="messages">
   <ol>
-    <li *ngFor="let message of messages; let i = index">
+    <li
+      class="animate__animated animate__backInRight"
+      *ngFor="let message of messages; let i = index"
+    >
       <h2 class="msg-header">{{ message.header }}</h2>
       <h5 class="msg-time">
         {{ message.createdAt.toDate() | date: "dd/MM/yyyy h:mm:ss a" }}
