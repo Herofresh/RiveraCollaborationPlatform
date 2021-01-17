@@ -40,14 +40,12 @@ export class MessageboardComponent implements OnInit {
   }
 
   nextBatch(e: any, offset: any) {
-    console.log(offset);
     if (this.theEnd) {
       return;
     }
 
     const end = this.viewport.getRenderedRange().end;
     const total = this.viewport.getDataLength();
-    console.log('end:', end, ' total:', total);
     if (end === total) {
       this.offset.next(offset);
     }
