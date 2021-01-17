@@ -1,0 +1,37 @@
+@import "../../../variables.scss";
+.header {
+  width: 90vw;
+  margin: 15px auto;
+  background-color: $pink;
+  padding: 15px;
+  border-radius: 15px;
+  display: flex;
+  .left {
+    flex: 1;
+    .profile-picture {
+      border-radius: 50%;
+      flex: 1;
+    }
+  }
+
+  .right {
+    flex: 10;
+  }
+}
+
+ol {
+  padding: 0px;
+  list-style-type: none;
+  li {
+    border-radius: 15px;
+    height: 100px;
+    width: 90vw;
+    margin: 15px auto;
+    background-color: #ff71ce;
+    padding: 15px;
+
+    .msg-header {
+      margin: 0 0;
+    }
+  }
+}

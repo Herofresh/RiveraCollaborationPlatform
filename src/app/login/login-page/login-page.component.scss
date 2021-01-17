@@ -1,3 +1,4 @@
+@import "../../../variables.scss";
 button {
   img {
     width: 1.25em;
@@ -6,6 +7,7 @@ button {
 
 :host {
   text-align: center;
+  background-color: $blue;
 }
 
 .logout {

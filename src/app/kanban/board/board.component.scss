@@ -1,9 +1,10 @@
+@import "../../../variables.scss";
 .outer-card {
   margin: 10px;
   min-width: 300px;
   max-width: 300px;
   padding: 10px;
-  background: #a08686;
+  background: $pink;
 }
 
 .inner-card {

@@ -11,16 +11,19 @@
       "
       class="animated lightSpeedIn"
     >
-      <h2>
-        {{ i }}. {{ message.header }}
-
+      <h2 class="msg-header">{{ message.header }}</h2>
+      <h5 class="msg-time">
         {{ message.createdAt.toDate() | date: "dd/MM/yyyy h:mm:ss a" }}
-      </h2>
-      <a [routerLink]="'/team/' + message.uid">{{ message.email }}</a>
+      </h5>
+      <h5 class="proflie-link" [routerLink]="'/team/' + message.uid">
+        {{ message.email }}
+      </h5>
       <p>{{ message.text }}</p>
     </li>
 
-    <h1 *ngIf="theEnd">THE END!</h1>
+    <li *ngIf="theEnd" class="animated lightSpeedIn">
+      <h2 class="msg-header">THE END!</h2>
+    </li>
   </cdk-virtual-scroll-viewport>
 </ng-container>
 

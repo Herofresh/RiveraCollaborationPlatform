@@ -1,15 +1,25 @@
 <div *ngIf="user">
-  <h1>{{ user.email }}</h1>
-  <h2>{{ user.displayName }}</h2>
-  <img referrerPolicy="no-referrer" [src]="user.photoUrl" />
+  <div class="header">
+    <div class="left">
+      <img
+        class="profile-picture"
+        referrerPolicy="no-referrer"
+        [src]="user.photoUrl"
+      />
+    </div>
+    <div class="right">
+      <h1>{{ user.displayName }}</h1>
+      <h5>{{ user.email }}</h5>
+    </div>
+  </div>
 </div>
 <div *ngIf="messages">
   <ol>
     <li *ngFor="let message of messages; let i = index">
-      <h2>
-        {{ i }}. {{ message.header }}
+      <h2 class="msg-header">{{ message.header }}</h2>
+      <h5 class="msg-time">
         {{ message.createdAt.toDate() | date: "dd/MM/yyyy h:mm:ss a" }}
-      </h2>
+      </h5>
       <p>{{ message.text }}</p>
     </li>
   </ol>

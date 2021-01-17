@@ -58,9 +58,9 @@
       >
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span class="logo" routerLink="/">🐻 Rivera Demo</span>
+      <span class="logo" routerLink="/">🐻 Bear Collaborate</span>
       <span class="fill-space"></span>
-      <div *ngIf="!(isHandset$ | async)">
+      <div class="buttons" *ngIf="!(isHandset$ | async)">
         <a mat-button routerLink="/kanban" routerLinkActive="active-link"
           >🍱 Kanban Demo</a
         >
@@ -70,9 +70,21 @@
         <a mat-button routerLink="/team" routerLinkActive="active-link"
           >👽 Teammates</a
         >
-        <a mat-button routerLink="/login" routerLinkActive="active-link"
+        <a
+          *ngIf="!(afAuth.authState | async)"
+          mat-button
+          routerLink="/login"
+          routerLinkActive="active-link"
           >🔑 Login</a
         >
+        <img
+          *ngIf="afAuth.authState | async as user"
+          routerLink="/login"
+          class="profile-picture"
+          referrerPolicy="no-referrer"
+          [src]="user.photoURL"
+          alt="Profile Picture"
+        />
       </div>
     </mat-toolbar>
     <ng-content> </ng-content>

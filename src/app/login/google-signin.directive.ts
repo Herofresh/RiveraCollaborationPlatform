@@ -14,12 +14,15 @@ export class GoogleSigninDirective {
     this.afAuth
       .signInWithPopup(new firebase.default.auth.GoogleAuthProvider())
       .then((data) => {
-        this.db.collection('user').add({
-          email: data.user?.email,
-          displayName: data.user?.displayName,
-          photoUrl: data.user?.photoURL,
-          uid: data.user?.uid,
-        });
+        this.db.collection('user').doc(data.user?.uid).set(
+          {
+            email: data.user?.email,
+            displayName: data.user?.displayName,
+            photoUrl: data.user?.photoURL,
+            uid: data.user?.uid,
+          },
+          { merge: true }
+        );
       });
   }
 }
