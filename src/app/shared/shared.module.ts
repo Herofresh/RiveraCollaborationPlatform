@@ -17,6 +17,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { LayoutModule } from '@angular/cdk/layout';
 import { RouterModule } from '@angular/router';
 import { DeleteButtonComponent } from './delete-button/delete-button.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 const components = [ShellComponent, DeleteButtonComponent];
 const modules = [
@@ -33,6 +34,7 @@ const modules = [
   MatInputModule,
   MatSnackBarModule,
   RouterModule,
+  MatDialogModule,
 ];
 
 @NgModule({

@@ -1,1 +1,35 @@
-<p>messageboard works!</p>
+<ng-container *ngIf="infinite$ | async as messages">
+  <cdk-virtual-scroll-viewport
+    itemSize="100"
+    (scrolledIndexChange)="
+      nextBatch($event, messages[messages.length - 1].createdAt)
+    "
+  >
+    <li
+      *cdkVirtualFor="
+        let message of messages;
+        let i = index;
+        trackBy: trackByIdx
+      "
+      class="animated lightSpeedIn"
+    >
+      <h2>
+        {{ i }}. {{ message.header }}
+        {{ message.createdAt.toDate() | date: "dd/MM/yyyy h:mm:ss a" }}
+      </h2>
+      <h5>{{ message.email }}</h5>
+      <p>{{ message.text }}</p>
+    </li>
+
+    <h1 *ngIf="theEnd">THE END!</h1>
+  </cdk-virtual-scroll-viewport>
+</ng-container>
+
+<button
+  mat-fab
+  class="add-comment"
+  color="primary"
+  aria-label="Adds a new Comment"
+>
+  <mat-icon>add_comment</mat-icon>
+</button>
