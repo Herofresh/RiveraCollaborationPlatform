@@ -31,6 +31,12 @@ export class MessageService {
     });
   }
 
+  getMessagesFromUser(uid: string) {
+    return this.db
+      .collection(this.collectionName, (ref) => ref.where('uid', '==', uid))
+      .snapshotChanges();
+  }
+
   /**
    * Gets Batches of 20 for infinite Scroll Component
    * @param lastSeen Last Element of Current Array

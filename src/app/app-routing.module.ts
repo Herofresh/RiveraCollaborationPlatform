@@ -22,6 +22,10 @@ const routes: Routes = [
       import('./messages/message.module').then((m) => m.MessageModule),
     canActivate: [AuthGuard],
   },
+  {
+    path: 'team',
+    loadChildren: () => import('./user/user.module').then((m) => m.UserModule),
+  },
 ];
 
 @NgModule({

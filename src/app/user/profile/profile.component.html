@@ -1,1 +1,16 @@
-<p>profile works!</p>
+<div *ngIf="user">
+  <h1>{{ user.email }}</h1>
+  <h2>{{ user.displayName }}</h2>
+  <img [src]="user.photoUrl" />
+</div>
+<div *ngIf="messages">
+  <ol>
+    <li *ngFor="let message of messages; let i = index">
+      <h2>
+        {{ i }}. {{ message.header }}
+        {{ message.createdAt.toDate() | date: "dd/MM/yyyy h:mm:ss a" }}
+      </h2>
+      <p>{{ message.text }}</p>
+    </li>
+  </ol>
+</div>
