@@ -9,7 +9,8 @@ cdk-virtual-scroll-viewport {
     height: 100px;
     width: 90vw;
     margin: 15px auto;
-    background-color: #ff71ce;
+    background-color: #333;
+    color: white;
     padding: 15px;
 
     .msg-header {
@@ -21,6 +22,7 @@ cdk-virtual-scroll-viewport {
     .proflie-link {
       color: white;
       cursor: pointer;
+      text-decoration: underline;
     }
   }
 
@@ -33,7 +35,7 @@ cdk-virtual-scroll-viewport {
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: #05ffa1;
+    background-color: #333;
   }
 }
 

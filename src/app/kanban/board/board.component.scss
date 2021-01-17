@@ -5,6 +5,10 @@
   max-width: 300px;
   padding: 10px;
   background: $pink;
+  color: white;
+  mat-card-subtitle {
+    color: white;
+  }
 }
 
 .inner-card {

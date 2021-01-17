@@ -36,6 +36,7 @@ header {
   background-color: $blue;
   &.pink {
     background-color: $pink;
+    color: white;
   }
   .row {
     flex: 1;
@@ -59,4 +60,8 @@ header {
       justify-content: center;
     }
   }
+}
+
+a {
+  color: white;
 }

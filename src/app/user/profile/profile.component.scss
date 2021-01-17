@@ -3,6 +3,7 @@
   width: 90vw;
   margin: 15px auto;
   background-color: $pink;
+  color: white;
   padding: 15px;
   border-radius: 15px;
   display: flex;
@@ -27,7 +28,8 @@ ol {
     height: 100px;
     width: 90vw;
     margin: 15px auto;
-    background-color: #ff71ce;
+    background-color: $pink;
+    color: white;
     padding: 15px;
 
     .msg-header {
