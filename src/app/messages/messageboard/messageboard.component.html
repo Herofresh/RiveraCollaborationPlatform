@@ -13,9 +13,10 @@
     >
       <h2>
         {{ i }}. {{ message.header }}
+
         {{ message.createdAt.toDate() | date: "dd/MM/yyyy h:mm:ss a" }}
       </h2>
-      <h5>{{ message.email }}</h5>
+      <a [routerLink]="'/team/' + message.uid">{{ message.email }}</a>
       <p>{{ message.text }}</p>
     </li>
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Message } from 'src/app/messages/message.model';
@@ -11,15 +11,14 @@ import { UserService } from '../user.service';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss'],
 })
-export class ProfileComponent implements OnInit {
-  public user!: any;
+export class ProfileComponent implements OnInit, OnDestroy {
+  public user!: User;
   public userSub!: Subscription;
   public messages: any[] = [];
   public messagesSub!: Subscription;
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router,
     private userService: UserService,
     private messageService: MessageService
   ) {}
@@ -38,5 +37,12 @@ export class ProfileComponent implements OnInit {
           return v.payload.doc.data();
         });
       });
+  }
+
+  ngOnDestroy(): void {
+    //Called once, before the instance is destroyed.
+    //Add 'implements OnDestroy' to the class.
+    this.userSub.unsubscribe();
+    this.messagesSub.unsubscribe();
   }
 }

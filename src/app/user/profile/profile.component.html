@@ -1,7 +1,7 @@
 <div *ngIf="user">
   <h1>{{ user.email }}</h1>
   <h2>{{ user.displayName }}</h2>
-  <img [src]="user.photoUrl" />
+  <img referrerPolicy="no-referrer" [src]="user.photoUrl" />
 </div>
 <div *ngIf="messages">
   <ol>
@@ -14,3 +14,4 @@
     </li>
   </ol>
 </div>
+<div *ngIf="!(user && messages)">Loading...</div>

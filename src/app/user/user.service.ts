@@ -9,7 +9,7 @@ export class UserService {
   constructor(private db: AngularFirestore) {}
 
   getUsers() {
-    return this.db.collection<User>('user').snapshotChanges();
+    return this.db.collection<User>('user').valueChanges();
   }
 
   getUser(uid: string) {
