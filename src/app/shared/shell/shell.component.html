@@ -77,14 +77,25 @@
           routerLinkActive="active-link"
           >🔑 Login</a
         >
-        <img
-          *ngIf="afAuth.authState | async as user"
-          routerLink="/login"
-          class="profile-picture"
-          referrerPolicy="no-referrer"
-          [src]="user.photoURL"
-          alt="Profile Picture"
-        />
+        <div *ngIf="afAuth.authState | async as user">
+          <img
+            *ngIf="user.photoURL"
+            routerLink="/login"
+            class="profile-picture"
+            referrerPolicy="no-referrer"
+            [src]="user.photoURL"
+            alt="Profile Picture"
+          />
+
+          <img
+            *ngIf="!user.photoURL"
+            routerLink="/login"
+            class="profile-picture"
+            referrerPolicy="no-referrer"
+            src="/assets/annon.jpg"
+            alt="Profile Picture"
+          />
+        </div>
       </div>
     </mat-toolbar>
     <ng-content> </ng-content>
