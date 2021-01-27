@@ -38,13 +38,6 @@
         (click)="drawer.close()"
         >Posts</a
       >
-      <a
-        mat-list-item
-        routerLink="/team"
-        routerLinkActive="active-link"
-        (click)="drawer.close()"
-        >Team</a
-      >
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -67,9 +60,15 @@
         <a mat-button routerLink="/posts" routerLinkActive="active-link"
           >ℹ Message Board Demo</a
         >
-        <a mat-button routerLink="/team" routerLinkActive="active-link"
-          >👽 Teammates</a
-        >
+        <div *ngIf="afAuth.authState | async as user">
+          <a
+            *ngIf="user.uid === 'xWWyaqL1PLYONwMlf0F5OIFo2e22'"
+            mat-button
+            routerLink="/team"
+            routerLinkActive="active-link"
+            >👽 Teammates</a
+          >
+        </div>
         <a
           *ngIf="!(afAuth.authState | async)"
           mat-button
