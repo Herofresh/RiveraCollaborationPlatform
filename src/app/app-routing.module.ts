@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomePageComponent } from './home-page/home-page.component';
+import { AdminGuard } from './login/admin.guard';
 import { AuthGuard } from './login/auth.guard';
 
 const routes: Routes = [
@@ -25,6 +26,7 @@ const routes: Routes = [
   {
     path: 'team',
     loadChildren: () => import('./user/user.module').then((m) => m.UserModule),
+    canActivate: [AdminGuard],
   },
 ];
 
